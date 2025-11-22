@@ -17,11 +17,8 @@ function aiMesh() constructor {
 	mNormals = [];
 	mTangents = [];
 	mBitangents = [];
-	mNumColorChannels = 0;
 	mColors = [];
-	mTextureCoords = array_create(AI_MAX_NUMBER_OF_TEXTURECOORDS, []);
-	mTextureCoordsNames = [];
-	mNumUVComponents = array_create(AI_MAX_NUMBER_OF_TEXTURECOORDS, 0);
+	mTextureCoords = [];
 	mFaces = [];
 	mNumBones = 0;
 	mBones = [];
@@ -32,15 +29,15 @@ function aiMesh() constructor {
 	 *  Method of morphing when anim-meshes are specified.
 	 *  @see aiMorphingMethod to learn more about the provided morphing targets.
 	 */
-	mMethod = 0;
+	mMethod = aiMorphingMethod.UNKNOWN;
 	mAABB = new aiAABB();
 	
 	static GetNumColorChannels = function() {
-		return mNumColorChannels;	
+		return array_length(mColors);
 	}
 	
 	static GetNumUVChannels = function() {
-		return array_length(mTextureCoords);	
+		return array_length(mTextureCoords);
 	}
 	
 	static HasBones = function() {
@@ -178,10 +175,27 @@ function aiMesh() constructor {
 				array_push(mBones, _bone);
 			}
 		
-		mNumColorChannels = ASSIMP_GetMeshColorChannelsNum();
-			for (var _ch = 0; _ch < mNumColorChannels; _ch++) {
+		var _mNumColorChannels = ASSIMP_GetMeshColorChannelsNum();
+			for (var _ch = 0; _ch < _mNumColorChannels; _ch++) {
 				var _color_ch = [];
-				for (var _i = 0; _i < mNumColorChannels; _i++) {
+				for (var _i = 0; _i < mNumVertices; _i++) {
+					var _col = new aiColor4D(
+						ASSIMP_GetMeshVertexColorR(_i, _ch),
+						ASSIMP_GetMeshVertexColorG(_i, _ch),
+						ASSIMP_GetMeshVertexColorB(_i, _ch),
+						ASSIMP_GetMeshVertexAlpha(_i, _ch)
+					);
+				
+					array_push(_color_ch, _col);
+				}
+				array_push(mColors, _color_ch);
+			}
+		var _numUVChannels = ASSIMP_GetMeshUVChannelsNum();
+			for (var _ch = 0; _ch < _numUVChannels; _ch++) {
+				var _uv_ch = new aiUVChannel();
+				_uv_ch.mName = ASSIMP_GetMeshTextureCoordsName(_ch);
+				for (var _i = 0; _i < mNumVertices; _i++) {
+					
 					var _col = new aiColor4D(
 						ASSIMP_GetMeshVertexColorR(_i, _ch),
 						ASSIMP_GetMeshVertexColorG(_i, _ch),

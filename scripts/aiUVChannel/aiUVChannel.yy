@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"aiUVChannel",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"aiUVChannel",
+  "parent":{
+    "name":"Libraries",
+    "path":"folders/Libraries.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

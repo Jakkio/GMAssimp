@@ -158,12 +158,12 @@ enum ASSIMP_LIGHT_SOURCE_TYPE
 }
 
 
-enum ASSIMP_PRIMITIVE_TYPE
+enum aiPrimitiveType
 {
-	POINT		= 1,
-	LINE		= 2,
-	TRIANGLE	= 4,
-	POLYGON		= 8
+	POINT		= 0x1,
+	LINE		= 0x2,
+	TRIANGLE	= 0x4,
+	POLYGON		= 0x8
 }
 
 
@@ -178,8 +178,8 @@ enum ASSIMP_ANIMATION_BEHAVIOUR
 /// Enumerates the methods of mesh morphing supported by Assimp.
 enum aiMorphingMethod
 {
-	aiMorphingMethod_UNKNOWN			= 0x0,
-	aiMorphingMethod_VERTEX_BLEND		= 0x1,
-	aiMorphingMethod_MORPH_NORMALIZED	= 0x2,
-	aiMorphingMethod_MORPH_RELATIVE		= 0x3
+	UNKNOWN				= 0x0,
+	VERTEX_BLEND		= 0x1,
+	MORPH_NORMALIZED	= 0x2,
+	MORPH_RELATIVE		= 0x3
 }

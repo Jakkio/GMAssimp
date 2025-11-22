@@ -30,6 +30,7 @@
     {"id":{"name":"aiColor4D","path":"scripts/aiColor4D/aiColor4D.yy",},},
     {"id":{"name":"aiFace","path":"scripts/aiFace/aiFace.yy",},},
     {"id":{"name":"aiMesh","path":"scripts/aiMesh/aiMesh.yy",},},
+    {"id":{"name":"aiUVChannel","path":"scripts/aiUVChannel/aiUVChannel.yy",},},
     {"id":{"name":"aiVector3D","path":"scripts/aiVector3D/aiVector3D.yy",},},
     {"id":{"name":"aiVertexWeight","path":"scripts/aiVertexWeight/aiVertexWeight.yy",},},
     {"id":{"name":"assimp_config","path":"scripts/assimp_config/assimp_config.yy",},},

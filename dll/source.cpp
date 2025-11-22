@@ -1053,6 +1053,13 @@ namespace Mesh
 			if (!act_mesh) { return 0; }
 			return act_mesh->mAABB.mMax.z;
 		}
+
+		export const char* GetMeshTextureCoordsName(double texture_channel)
+		{
+			if (!act_mesh) { return ""; }
+			if (texture_channel >= act_mesh->GetNumUVChannels()) { return ""; }
+			return act_mesh->mTextureCoordsNames[(uint)texture_channel]->C_Str();
+		}
 	}
 
 	namespace Data
