@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"aiAABB",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"aiAABB",
+  "parent":{
+    "name":"Libraries",
+    "path":"folders/Libraries.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

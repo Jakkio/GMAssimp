@@ -175,10 +175,11 @@ enum ASSIMP_ANIMATION_BEHAVIOUR
 	REPEAT		= 3,
 }
 
-
-enum ASSIMP_MORPH_METHOD
+/// Enumerates the methods of mesh morphing supported by Assimp.
+enum aiMorphingMethod
 {
-	VERTEX_BLEND		= 1,
-	MORPH_NORMALIZED	= 2,
-	MORPH_RELATIVE		= 3,
+	aiMorphingMethod_UNKNOWN			= 0x0,
+	aiMorphingMethod_VERTEX_BLEND		= 0x1,
+	aiMorphingMethod_MORPH_NORMALIZED	= 0x2,
+	aiMorphingMethod_MORPH_RELATIVE		= 0x3
 }

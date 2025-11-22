@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"aiFace",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"aiFace",
+  "parent":{
+    "name":"Libraries",
+    "path":"folders/Libraries.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
