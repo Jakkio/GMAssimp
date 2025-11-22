@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"assimp_constants",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"assimp_constants",
+  "parent":{
+    "name":"Assimp",
+    "path":"folders/Libraries/Assimp.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"assimp_enums",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"assimp_enums",
+  "parent":{
+    "name":"Assimp",
+    "path":"folders/Libraries/Assimp.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"aiMesh",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"aiMesh",
+  "parent":{
+    "name":"Libraries",
+    "path":"folders/Libraries.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
