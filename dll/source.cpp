@@ -1064,8 +1064,262 @@ namespace Mesh
 		export const char* GetMeshTextureCoordsName(double texture_channel)
 		{
 			if (!act_mesh) { return ""; }
-			if (texture_channel >= act_mesh->GetNumUVChannels()) { return ""; }
+			if (texture_channel < 0 || texture_channel >= act_mesh->GetNumUVChannels()) { return ""; }
 			return act_mesh->mTextureCoordsNames[(uint)texture_channel]->C_Str();
+		}
+
+		export double GetMeshAnimMeshNum()
+		{
+			if (!act_mesh) { return 0; }
+			return act_mesh->mNumAnimMeshes;
+		}
+
+		export const char* GetMeshAnimMeshName(double anim_mesh_id)
+		{
+			if (!act_mesh) { return ""; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return ""; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mName.C_Str();
+		}
+
+		export double GetMeshAnimMeshWeight(double anim_mesh_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mWeight;
+		}
+
+		export double GetMeshAnimMeshHasPositions(double anim_mesh_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mVertices == NULL) { return false; }
+			return true;
+		}
+
+		export double GetMeshAnimMeshHasNormals(double anim_mesh_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mNormals == NULL) { return false; }
+			return true;
+		}
+
+		export double GetMeshAnimMeshHasTangents(double anim_mesh_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTangents == NULL) { return false; }
+			return true;
+		}
+
+		export double GetMeshAnimMeshHasBitangents(double anim_mesh_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mBitangents == NULL) { return false; }
+			return true;
+		}
+
+		export double GetMeshAnimMeshHasColors(double anim_mesh_id, double color_channel)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (!(color_channel < act_mesh->GetNumUVChannels())) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mColors[(uint)color_channel] == NULL) { return false; }
+			return true;
+		}
+
+		export double GetMeshAnimMeshHasTexCoords(double anim_mesh_id, double texture_channel)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (!(texture_channel < act_mesh->GetNumUVChannels())) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTextureCoords[(uint)texture_channel] == NULL) { return false; }
+			return true;
+		}
+
+		export double GetMeshAnimMeshVertexX(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mVertices[(uint)vertex_id].x;
+		}
+
+		export double GetMeshAnimMeshVertexY(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mVertices[(uint)vertex_id].y;
+		}
+
+		export double GetMeshAnimMeshVertexZ(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mVertices[(uint)vertex_id].z;
+		}
+
+		export double GetMeshAnimMeshNormalX(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mNormals == NULL) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mNormals == NULL) { return act_mesh->mNormals[(uint)vertex_id].x; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mNormals[(uint)vertex_id].x;
+		}
+
+		export double GetMeshAnimMeshNormalY(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mNormals == NULL) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mNormals == NULL) { return act_mesh->mNormals[(uint)vertex_id].y; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mNormals[(uint)vertex_id].y;
+		}
+
+		export double GetMeshAnimMeshNormalZ(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mNormals == NULL) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mNormals == NULL) { return act_mesh->mNormals[(uint)vertex_id].z; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mNormals[(uint)vertex_id].z;
+		}
+
+		export double GetMeshAnimMeshTangentX(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mTangents == NULL) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTangents == NULL) { return act_mesh->mTangents[(uint)vertex_id].x; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTangents[(uint)vertex_id].x;
+		}
+
+		export double GetMeshAnimMeshTangentY(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mTangents == NULL) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTangents == NULL) { return act_mesh->mTangents[(uint)vertex_id].y; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTangents[(uint)vertex_id].y;
+		}
+
+		export double GetMeshAnimMeshTangentZ(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mTangents == NULL) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTangents == NULL) { return act_mesh->mTangents[(uint)vertex_id].z; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTangents[(uint)vertex_id].z;
+		}
+
+		export double GetMeshAnimMeshBitangentX(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mBitangents == NULL) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mBitangents == NULL) { return act_mesh->mBitangents[(uint)vertex_id].x; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mBitangents[(uint)vertex_id].x;
+		}
+
+		export double GetMeshAnimMeshBitangentY(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mBitangents == NULL) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mBitangents == NULL) { return act_mesh->mBitangents[(uint)vertex_id].y; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mBitangents[(uint)vertex_id].y;
+		}
+
+		export double GetMeshAnimMeshBitangentZ(double anim_mesh_id, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mBitangents == NULL) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mBitangents == NULL) { return act_mesh->mBitangents[(uint)vertex_id].z; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mBitangents[(uint)vertex_id].z;
+		}
+
+		export double GetMeshAnimMeshVertexColorR(double anim_mesh_id, double color_channel, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (!(color_channel < act_mesh->GetNumColorChannels())) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mColors[(uint)color_channel] == NULL) { return act_mesh->mColors[(uint)color_channel][(uint)vertex_id].r; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mColors[(uint)color_channel][(uint)vertex_id].r;
+		}
+
+		export double GetMeshAnimMeshVertexColorG(double anim_mesh_id, double color_channel, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (!(color_channel < act_mesh->GetNumColorChannels())) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mColors[(uint)color_channel] == NULL) { return act_mesh->mColors[(uint)color_channel][(uint)vertex_id].g; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mColors[(uint)color_channel][(uint)vertex_id].g;
+		}
+
+		export double GetMeshAnimMeshVertexColorB(double anim_mesh_id, double color_channel, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (!(color_channel < act_mesh->GetNumColorChannels())) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mColors[(uint)color_channel] == NULL) { return act_mesh->mColors[(uint)color_channel][(uint)vertex_id].b; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mColors[(uint)color_channel][(uint)vertex_id].b;
+		}
+
+		export double GetMeshAnimMeshVertexColorA(double anim_mesh_id, double color_channel, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (!(color_channel < act_mesh->GetNumColorChannels())) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mColors[(uint)color_channel] == NULL) { return act_mesh->mColors[(uint)color_channel][(uint)vertex_id].a; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mColors[(uint)color_channel][(uint)vertex_id].a;
+		}
+
+		export double GetMeshAnimMeshTexCoordU(double anim_mesh_id, double texture_channel, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (!(texture_channel < act_mesh->GetNumUVChannels())) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTextureCoords[(uint)texture_channel] == NULL) { return act_mesh->mTextureCoords[(uint)texture_channel][(uint)vertex_id].x; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTextureCoords[(uint)texture_channel][(uint)vertex_id].x;
+		}
+
+		export double GetMeshAnimMeshTexCoordV(double anim_mesh_id, double texture_channel, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (!(texture_channel < act_mesh->GetNumUVChannels())) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTextureCoords[(uint)texture_channel] == NULL) { return act_mesh->mTextureCoords[(uint)texture_channel][(uint)vertex_id].y; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTextureCoords[(uint)texture_channel][(uint)vertex_id].y;
+		}
+
+		export double GetMeshAnimMeshTexCoordW(double anim_mesh_id, double texture_channel, double vertex_id)
+		{
+			if (!act_mesh) { return 0; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return 0; }
+			if (!(texture_channel < act_mesh->GetNumUVChannels())) { return 0; }
+			if (vertex_id < 0 || vertex_id >= act_mesh->mNumVertices) { return 0; }
+			if (act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTextureCoords[(uint)texture_channel] == NULL) { return act_mesh->mTextureCoords[(uint)texture_channel][(uint)vertex_id].z; }
+			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mTextureCoords[(uint)texture_channel][(uint)vertex_id].z;
 		}
 	}
 

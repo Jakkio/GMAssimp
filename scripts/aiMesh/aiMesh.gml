@@ -24,6 +24,7 @@ function aiMesh() constructor {
 	mBones = [];
 	mMaterialIndex = 0;
 	mName = "";
+	mNumAnimMeshes = 0;
 	mAnimMeshes = [];
 	/**
 	 *  Method of morphing when anim-meshes are specified.
@@ -177,52 +178,37 @@ function aiMesh() constructor {
 		
 		var _mNumColorChannels = ASSIMP_GetMeshColorChannelsNum();
 			for (var _ch = 0; _ch < _mNumColorChannels; _ch++) {
-				var _color_ch = [];
+				var _color_ch = array_create(_mNumColorChannels, 0);	//Preallocation
 				for (var _i = 0; _i < mNumVertices; _i++) {
-					var _col = new aiColor4D(
+					_color_ch[_i] = new aiColor4D(
 						ASSIMP_GetMeshVertexColorR(_i, _ch),
 						ASSIMP_GetMeshVertexColorG(_i, _ch),
 						ASSIMP_GetMeshVertexColorB(_i, _ch),
 						ASSIMP_GetMeshVertexAlpha(_i, _ch)
 					);
 				
-					array_push(_color_ch, _col);
 				}
 				array_push(mColors, _color_ch);
 			}
+		
 		var _numUVChannels = ASSIMP_GetMeshUVChannelsNum();
 			for (var _ch = 0; _ch < _numUVChannels; _ch++) {
 				var _uv_ch = new aiUVChannel();
 				_uv_ch.mName = ASSIMP_GetMeshTextureCoordsName(_ch);
-				_uv_ch.mNumUVComponents = ASSIMP_GetMesht(_ch);
-				
+				_uv_ch.mNumUVComponents = ASSIMP_GetMeshNumUVComponents(_ch);
+				var _tex_coords = array_create(_numUVChannels, 0);	//Preallocation
 				for (var _i = 0; _i < mNumVertices; _i++) {
-					
-					var _col = new aiColor4D(
-						ASSIMP_GetMeshVertexColorR(_i, _ch),
-						ASSIMP_GetMeshVertexColorG(_i, _ch),
-						ASSIMP_GetMeshVertexColorB(_i, _ch),
-						ASSIMP_GetMeshVertexAlpha(_i, _ch)
+					_tex_coords[_i] = new aiVector3D(
+						ASSIMP_GetMeshTexCoordU(),
+						ASSIMP_GetMeshTexCoordV(),
+						ASSIMP_GetMeshTexCoordW()
 					);
-				
-					array_push(_color_ch, _col);
 				}
-				array_push(mColors, _color_ch);
+				_uv_ch.mTextureCoords = _tex_coords;
 			}
-		
-		
-		
-		
-		
-		mNumUVComponents = array_create(AI_MAX_NUMBER_OF_TEXTURECOORDS, 0);
-		mTextureCoords = array_create(AI_MAX_NUMBER_OF_TEXTURECOORDS, []);
-		mTextureCoordsNames = [];
-		
-		
-		
-		
-		mAnimMeshes = [];
-		
+			
+		//mNumAnimMeshes = assimp_getmeshan
+		//mAnimMeshes = [];
 		
 		mMethod = ASSIMP_GetMeshMorphMethod();
 		

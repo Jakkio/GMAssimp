@@ -14,7 +14,7 @@
  * Note
  *     Take a look at the Data Structures page for more information on the layout and winding order of a face.
  */
-function aiFace() constructor{
+function aiFace() constructor {
 	// Indices array. Size of the array is given in numIndices.
 	mIndices = [];
 	

@@ -5,7 +5,7 @@
 /**
  * A mesh can have multiple channels for UV
  */
-function aiUVChannel() constructor{
+function aiUVChannel() constructor {
 	mName = "";
 	/**
 	 * Specifies the number of components for a given UV channel.

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"aiAnimMesh",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"aiAnimMesh",
+  "parent":{
+    "name":"Libraries",
+    "path":"folders/Libraries.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

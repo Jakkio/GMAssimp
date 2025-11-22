@@ -26,6 +26,7 @@
     {"id":{"name":"obj_object1","path":"objects/obj_object1/obj_object1.yy",},},
     {"id":{"name":"rm_room1","path":"rooms/rm_room1/rm_room1.yy",},},
     {"id":{"name":"aiAABB","path":"scripts/aiAABB/aiAABB.yy",},},
+    {"id":{"name":"aiAnimMesh","path":"scripts/aiAnimMesh/aiAnimMesh.yy",},},
     {"id":{"name":"aiBone","path":"scripts/aiBone/aiBone.yy",},},
     {"id":{"name":"aiColor4D","path":"scripts/aiColor4D/aiColor4D.yy",},},
     {"id":{"name":"aiFace","path":"scripts/aiFace/aiFace.yy",},},

@@ -7,7 +7,7 @@
  * @param	{Real} _pID			ID
  * @param	{Real} _pWeight		Vertex weight factor 
  */
-function aiVertexWeight(_pID = 0, _pWeight = 0) constructor{
+function aiVertexWeight(_pID = 0, _pWeight = 0) constructor {
 	//Index of the vertex which is influenced by the bone
 	mVertexId = _pID;
 	
