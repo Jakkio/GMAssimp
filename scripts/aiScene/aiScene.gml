@@ -9,7 +9,6 @@ function aiScene() constructor {
 	mTextures = [];
 	mLights = [];
 	mCameras = [];
-	mSkeletons = [];
 	//mMetaData = {};
 	
 	
