@@ -15,6 +15,7 @@
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"BoxTextured.glb","CopyToMask":-1,"filePath":"datafiles","name":"BoxTextured.glb","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"OrientationTest.glb","CopyToMask":-1,"filePath":"datafiles","name":"OrientationTest.glb","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,

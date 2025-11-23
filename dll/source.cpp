@@ -10,7 +10,8 @@ using namespace std;
 
 typedef unsigned int uint;
 
-aiString ret_string;		//Global scope string for avoid return dereferenced pointers
+aiString ret_aistring;		//Global scope string for avoid return dereferenced pointers
+string ret_string;			//Global scope string for avoid return dereferenced pointers
 aiMatrix4x4 temp_matrix;	//Storage matrix for limitations with different argument type in extensions
 
 double aiColorToGmColor(const aiColor3D& aiCol)
@@ -738,9 +739,9 @@ namespace Importer
 	{
 		if (act_importer)
 		{
-			ret_string = "";
-			act_importer->GetExtensionList(ret_string);
-			return (char*)ret_string.C_Str();
+			ret_aistring = "";
+			act_importer->GetExtensionList(ret_aistring);
+			return (char*)ret_aistring.C_Str();
 		}
 		return "";
 	}
@@ -776,8 +777,8 @@ namespace Importer
 	{
 		if (act_importer)
 		{
-			ret_string = act_importer->GetPropertyString(name, error_return).c_str();
-			return (char*)ret_string.C_Str();
+			ret_aistring = act_importer->GetPropertyString(name, error_return).c_str();
+			return (char*)ret_aistring.C_Str();
 		}
 		return error_return;
 	}
@@ -1772,8 +1773,8 @@ namespace Material
 		export const char* GetMaterialName()
 		{
 			if (!act_material) { return ""; }
-			ret_string = act_material->GetName();
-			return (char*)ret_string.C_Str();
+			ret_aistring = act_material->GetName();
+			return (char*)ret_aistring.C_Str();
 		}
 
 
@@ -1979,9 +1980,9 @@ namespace Material
 #else
 			uint ai_t = t;
 #endif
-			ret_string = "";
-			act_material->Get(AI_MATKEY_TEXTURE(ai_t, (uint)n), ret_string);
-			return (char*)ret_string.C_Str();
+			ret_aistring = "";
+			act_material->Get(AI_MATKEY_TEXTURE(ai_t, (uint)n), ret_aistring);
+			return (char*)ret_aistring.C_Str();
 		}
 
 		export double GetMaterialDiffuseColorGM()
@@ -2690,7 +2691,7 @@ namespace Node
 
 	export double BindNodeMetadata()
 	{
-		if (act_scene)
+		if (act_node)
 		{
 			act_metadata = act_node->mMetaData;
 		}
@@ -3057,4 +3058,178 @@ namespace Animation
 			return act_mesh_anim->mKeys[(uint)key_id].mValue;
 		}
 	}
+}
+
+
+// I just take it from this guy.
+// Thank you a lot.
+// The code is altered a bit just for hardcode some values that i don't care to have an option for. Plus removed unuseful code.
+namespace Base64encoding {
+	/*
+   base64.cpp and base64.h
+
+   base64 encoding and decoding with C++.
+   More information at
+	 https://renenyffenegger.ch/notes/development/Base64/Encoding-and-decoding-base-64-with-cpp
+
+   Version: 2.rc.09 (release candidate)
+
+   Copyright (C) 2004-2017, 2020-2022 René Nyffenegger
+
+   This source code is provided 'as-is', without any express or implied
+   warranty. In no event will the author be held liable for any damages
+   arising from the use of this software.
+
+   Permission is granted to anyone to use this software for any purpose,
+   including commercial applications, and to alter it and redistribute it
+   freely, subject to the following restrictions:
+
+   1. The origin of this source code must not be misrepresented; you must not
+	  claim that you wrote the original source code. If you use this source code
+	  in a product, an acknowledgment in the product documentation would be
+	  appreciated but is not required.
+
+   2. Altered source versions must be plainly marked as such, and must not be
+	  misrepresented as being the original source code.
+
+   3. This notice may not be removed or altered from any source distribution.
+
+   René Nyffenegger rene.nyffenegger@adp-gmbh.ch
+
+*/
+	std::string base64_encode(unsigned char const* bytes_to_encode, size_t in_len) {
+
+		size_t len_encoded = (in_len + 2) / 3 * 4;
+
+		static unsigned char trailing_char = '=';
+
+		//
+		// Choose set of base64 characters. They differ
+		// for the last two positions, depending on the url
+		// parameter.
+		// A bool (as is the parameter url) is guaranteed
+		// to evaluate to either 0 or 1 in C++ therefore,
+		// the correct character set is chosen by subscripting
+		// base64_chars with url.
+		//
+		static const char* base64_chars_ =	"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+											"abcdefghijklmnopqrstuvwxyz"
+											"0123456789"
+											"+/";
+
+		std::string ret;
+		ret.reserve(len_encoded);
+
+		unsigned int pos = 0;
+
+		while (pos < in_len) {
+			ret.push_back(base64_chars_[(bytes_to_encode[pos + 0] & 0xfc) >> 2]);
+
+			if (pos + 1 < in_len) {
+				ret.push_back(base64_chars_[((bytes_to_encode[pos + 0] & 0x03) << 4) + ((bytes_to_encode[pos + 1] & 0xf0) >> 4)]);
+
+				if (pos + 2 < in_len) {
+					ret.push_back(base64_chars_[((bytes_to_encode[pos + 1] & 0x0f) << 2) + ((bytes_to_encode[pos + 2] & 0xc0) >> 6)]);
+					ret.push_back(base64_chars_[bytes_to_encode[pos + 2] & 0x3f]);
+				}
+				else {
+					ret.push_back(base64_chars_[(bytes_to_encode[pos + 1] & 0x0f) << 2]);
+					ret.push_back(trailing_char);
+				}
+			}
+			else {
+
+				ret.push_back(base64_chars_[(bytes_to_encode[pos + 0] & 0x03) << 4]);
+				ret.push_back(trailing_char);
+				ret.push_back(trailing_char);
+			}
+
+			pos += 3;
+		}
+
+
+		return ret;
+	}
+
+}
+
+namespace Texture {
+
+	export double GetTexturesNum()
+	{
+		if (act_scene)
+		{
+			return act_scene->mNumTextures;
+		}
+		return 0;
+	}
+
+	export double GetTextureWidth(double texture_id)
+	{
+		if (act_scene)
+		{
+			if (texture_id < 0 || texture_id >= act_scene->mNumTextures) {
+				return 0;
+			}
+			return act_scene->mTextures[(int)texture_id]->mWidth;
+		}
+		return 0;
+	}
+
+	export double GetTextureHeight(double texture_id)
+	{
+		if (act_scene)
+		{
+			if (texture_id < 0 || texture_id >= act_scene->mNumTextures) {
+				return 0;
+			}
+			return act_scene->mTextures[(int)texture_id]->mHeight;
+		}
+		return 0;
+	}
+
+	export const char*  GetTextureFormatHint(double texture_id)
+	{
+		if (act_scene)
+		{
+			if (texture_id < 0 || texture_id >= act_scene->mNumTextures) {
+				return "";
+			}
+			return act_scene->mTextures[(int)texture_id]->achFormatHint;
+		}
+		return "";
+	}
+
+	export const char* GetTextureFilename(double texture_id)
+	{
+		if (act_scene)
+		{
+			if (texture_id < 0 || texture_id >= act_scene->mNumTextures) {
+				return "";
+			}
+			return act_scene->mTextures[(int)texture_id]->mFilename.C_Str();
+		}
+		return "";
+	}
+
+	export const char* GetTextureDataBase64(double texture_id)
+	{
+		if (act_scene)
+		{
+			if (texture_id < 0 || texture_id >= act_scene->mNumTextures) {
+				return "";
+			}
+
+			aiTexture* texture = act_scene->mTextures[(int)texture_id];
+			const unsigned char* data = (const unsigned char*) texture->pcData;
+			if (texture->mHeight == 0) {
+				ret_string = Base64encoding::base64_encode(data, texture->mWidth);
+				return ret_string.c_str();
+			}
+			ret_string = Base64encoding::base64_encode(data, texture->mWidth * texture->mHeight * 4);
+			return ret_string.c_str();
+		}
+		return "";
+	}
+
 }

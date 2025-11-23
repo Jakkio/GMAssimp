@@ -1,5 +1,10 @@
+var _filename;
+//_filename = "OrientationTest.glb";
+_filename = "BoxTextured.glb";
+
+
 importer = new aiImporter();
-scene = importer.ReadFile(	working_directory + "/OrientationTest.glb",
+scene = importer.ReadFile(	working_directory + "/" + _filename,
 							ASSIMP_PP.CONVERT_TO_LEFT_HANDED |
 							ASSIMP_PP.TARGET_REALTIME_MAX_QUALITY |
 							ASSIMP_PP.SPLIT_BONE_COUNT |
