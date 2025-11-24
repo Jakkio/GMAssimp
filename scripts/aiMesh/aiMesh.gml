@@ -86,7 +86,7 @@ function aiMesh() constructor {
 			for (var _i = 0; _i < _face.mNumIndices; _i++) {
 				array_push(_face.mIndices, ASSIMP_GetMeshFaceVertexIndex(_f, _i))
 			}
-			mFaces[_i]= _face;
+			mFaces[_f]= _face;
 		}
 		
 		mNumVertices = ASSIMP_GetMeshVerticesNum();

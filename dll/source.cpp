@@ -1260,14 +1260,18 @@ namespace Mesh
 		export double GetMeshNumUVComponents(double texture_channel)
 		{
 			if (!act_mesh) { return 0; }
-			if (texture_channel >= act_mesh->GetNumUVChannels()) { return 0; }
+			if (texture_channel >= act_mesh->GetNumUVChannels()) {
+				return 0;
+			}
 			return act_mesh->mNumUVComponents[(uint)texture_channel];
 		}
 
 		export const char* GetMeshTextureCoordsName(double texture_channel)
 		{
 			if (!act_mesh) { return ""; }
-			if (texture_channel < 0 || texture_channel >= act_mesh->GetNumUVChannels()) { return ""; }
+			if (act_mesh->mTextureCoordsNames == nullptr || texture_channel < 0 || texture_channel >= act_mesh->GetNumUVChannels()) {
+				return "";
+			}
 			return act_mesh->mTextureCoordsNames[(uint)texture_channel]->C_Str();
 		}
 
@@ -1280,7 +1284,9 @@ namespace Mesh
 		export const char* GetMeshAnimMeshName(double anim_mesh_id)
 		{
 			if (!act_mesh) { return ""; }
-			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) { return ""; }
+			if (anim_mesh_id < 0 || anim_mesh_id >= act_mesh->mNumAnimMeshes) {
+				return "";
+			}
 			return act_mesh->mAnimMeshes[(uint)anim_mesh_id]->mName.C_Str();
 		}
 
