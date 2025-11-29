@@ -1,9 +1,24 @@
+/**
+ * An animation consists of keyframe data for a number of nodes.
+ * For each node affected by the animation a separate series of data is given.
+ */
 function aiAnimation() constructor {
+	/** The name of the animation. If the modeling package this data was exported from does support only a single animation channel, this name is usually empty. */
 	mName = "";
+	
+	/** Duration of the animation in ticks. */
 	mDuration = -1;
+	
+	/** Ticks per second. 0 if not specified in the imported file */
 	mTicksPerSecond = 0;
+	
+	/** The node animation channels. Each channel affects a single node. The array is mNumChannels in size. */
 	mChannels = [];
+	
+	/** The mesh animation channels. Each channel affects a single mesh and defines vertex-based animation. The array is mNumMeshChannels in size. */
 	mMeshChannels = [];
+	
+	/** The morph mesh animation channels. Each channel affects a single mesh. The array is mNumMorphMeshChannels in size. */
 	mMorphMeshChannels = [];
 	
 	

@@ -1,5 +1,13 @@
+/**
+ * Describes vertex-based animations for a single mesh or a group of meshes.
+ * Meshes carry the animation data for each frame in their aiAnimMesh structures.
+ * The purpose of aiMeshMorphAnim is to define keyframes linking each mesh attachment to a particular point in time.
+ */
 function aiMeshMorphAnim() constructor {
+	/** Name of the mesh to be animated. An empty string is not allowed, animated meshes need to be named. */
 	mName = "";
+	
+	/** Array of aiMeshKey structures. The array is mNumKeys in size. */
 	mKeys = [];
 	
 	

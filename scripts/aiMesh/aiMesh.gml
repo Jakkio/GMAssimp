@@ -16,20 +16,50 @@ enum aiPrimitiveType
 }
 
 
+/**
+ * A mesh represents a geometry or model with a single material.
+ * It usually consists of a number of vertices and a series of primitives/faces referencing the vertices.
+ * In addition there might be a series of bones, each of them addressing a number of vertices with a certain weight.
+ */
 function aiMesh() constructor {
 	
+	/** The name of the mesh. Meshes can be named, but this is not a requirement. */
 	mName = "";
+	
+	/** The material used by this mesh. A mesh uses only a single material. */
 	mMaterialIndex = 0;
+	
+	/** The types of primitives contained in this mesh. This is a bitwise combination of aiPrimitiveType flags. */
 	mPrimitiveTypes = 0;
+	
+	/** The number of vertices in this mesh. This is also the size of all of the per-vertex data arrays. */
 	mNumVertices = 0;
+	
+	/** Vertex positions. This array is always present in a mesh. */
 	mVertices = [];
+	
+	/** Vertex normals. The array contains normalized vectors, NULL if not present. */
 	mNormals = [];
+	
+	/** Vertex tangents. The tangent of a vertex points in the direction of the positive X texture axis. */
 	mTangents = [];
+	
+	/** Vertex bitangents. The bitangent of a vertex points in the direction of the positive Y texture axis. */
 	mBitangents = [];
+	
+	/** Vertex color sets. A mesh may contain 0 to AI_MAX_NUMBER_OF_COLOR_SETS vertex colors per vertex. */
 	mColors = [];
+	
+	/** Vertex texture coords, also known as UV channels. A mesh may contain 0 to AI_MAX_NUMBER_OF_TEXTURECOORDS per vertex. */
 	mUVChannels = [];
+	
+	/** The faces the mesh is constructed from. Each face refers to a number of vertices by their indices. */
 	mFaces = [];
+	
+	/** The bones of this mesh. A bone consists of a name by which it can be found in the frame hierarchy and a set of vertex weights. */
 	mBones = [];
+	
+	/** The animation meshes attached to this mesh. */
 	mAnimMeshes = [];
 	/**
 	 *  Method of morphing when anim-meshes are specified.
@@ -38,30 +68,58 @@ function aiMesh() constructor {
 	mMethod = aiMorphingMethod.UNKNOWN;
 	mAABB = new aiAABB();
 	
+	/**
+	 * Returns the number of color channels in this mesh.
+	 * @return {Real} The number of color channels
+	 */
 	static GetNumColorChannels = function() {
 		return array_length(mColors);
 	}
 	
+	/**
+	 * Returns the number of UV channels in this mesh.
+	 * @return {Real} The number of UV channels
+	 */
 	static GetNumUVChannels = function() {
 		return array_length(mUVChannels);
 	}
 	
+	/**
+	 * Checks whether the mesh contains bones.
+	 * @return {Bool} True if the mesh has bones, false otherwise
+	 */
 	static HasBones = function() {
 		return array_length(mNumBones) > 0;
 	}
 	
+	/**
+	 * Checks whether the mesh contains faces.
+	 * @return {Bool} True if the mesh has faces, false otherwise
+	 */
 	static HasFaces = function() {
 		return array_length(mFaces) > 0;
 	}
 	
+	/**
+	 * Checks whether the mesh contains normals.
+	 * @return {Bool} True if the mesh has normals, false otherwise
+	 */
 	static HasNormals = function() {
 		return array_length(mmNormalsFaces) > 0;
 	}
 	
+	/**
+	 * Checks whether the mesh contains vertex positions.
+	 * @return {Bool} True if the mesh has positions, false otherwise
+	 */
 	static HasPositions = function() {
 		return array_length(mVertices) > 0;
 	}
 	
+	/**
+	 * Checks whether the mesh contains tangents and bitangents.
+	 * @return {Bool} True if the mesh has tangents and bitangents, false otherwise
+	 */
 	static HasTangentsAndBitangents = function() {
 		return array_length(mTangents) > 0;
 	}

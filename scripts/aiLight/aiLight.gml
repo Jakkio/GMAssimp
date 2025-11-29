@@ -1,18 +1,50 @@
+/**
+ * Helper structure to describe a light source.
+ * Assimp supports multiple sorts of light sources, including spot lights, point lights and directional lights.
+ * All of them are defined with just a single structure and distinguished by their parameters.
+ */
 function aiLight() constructor {
 	
+	/** The name of the light source. */
 	mName = "";
+	
+	/** The type of the light source (aiLightSourceType). */
 	mType = aiLightSourceType.UNDEFINED;
+	
+	/** Position of the light source in space. Relative to the transformation of the node corresponding to the light. */
 	mPosition = new aiVector3D();
+	
+	/** Direction of the light source in space. Relative to the transformation of the node corresponding to the light. */
 	mDirection = new aiVector3D();
+	
+	/** Up direction of the light source in space. Relative to the transformation of the node corresponding to the light. */
 	mUp = new aiVector3D();
+	
+	/** Constant light attenuation factor. */
 	mAttenuationConstant = 0;
+	
+	/** Linear light attenuation factor. */
 	mAttenuationLinear = 1;
+	
+	/** Quadratic light attenuation factor. */
 	mAttenuationQuadratic = 0;
+	
+	/** Diffuse color of the light source. */
 	mColorDiffuse = new aiColor3D();
+	
+	/** Specular color of the light source. */
 	mColorSpecular = new aiColor3D();
+	
+	/** Ambient color of the light source. */
 	mColorAmbient = new aiColor3D();
+	
+	/** Inner angle of a spot light's light cone. */
 	mAngleInnerCone = pi*2;
+	
+	/** Outer angle of a spot light's light cone. */
 	mAngleOuterCone = pi*2;
+	
+	/** Size of area light source. */
 	mSize = new aiVector2D();
 	
 	

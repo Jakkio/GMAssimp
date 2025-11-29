@@ -1,13 +1,34 @@
+/**
+ * The root structure of the imported data.
+ * Everything that was imported from the given file can be accessed from here.
+ * Objects of this class are generally maintained and owned by Assimp, not by the caller.
+ */
 function aiScene() constructor {
 	
+	/** The name of the scene itself. */
 	mName = "";
+	
 	//mFlags = 0;
+	
+	/** The root node of the hierarchy. There will always be at least the root node if the import was successful. */
 	mRootNode = new aiNode();
+	
+	/** The array of meshes. May be empty if the file contained no meshes. */
 	mMeshes = [];
+	
+	/** The array of materials. May be empty if the file contained no materials. */
 	mMaterials = [];
+	
+	/** The array of animations. May be empty if the file contained no animations. */
 	mAnimations = [];
+	
+	/** The array of embedded textures. May be empty if the file contained no embedded textures. */
 	mTextures = [];
+	
+	/** The array of light sources. May be empty if the file contained no lights. */
 	mLights = [];
+	
+	/** The array of cameras. May be empty if the file contained no cameras. */
 	mCameras = [];
 	//mMetaData = {};
 	

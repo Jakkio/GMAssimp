@@ -1,9 +1,25 @@
+/**
+ * Describes the animation of a single node.
+ * The name specifies the bone/node which is affected by this animation channel.
+ * The keyframes are given in three separate series of values, one each for position, rotation and scaling.
+ */
 function aiNodeAnim() constructor {
+	/** The name of the node affected by this animation. The node must exist and it must be unique. */
 	mNodeName = "";
+	
+	/** The behavior of the animation before the first key is encountered. */
 	mPreState = aiAnimBehaviour.DEFAULT;
+	
+	/** The behavior of the animation after the last key was processed. */
 	mPostState = aiAnimBehaviour.DEFAULT;
+	
+	/** The position keys of this animation channel. Positions are specified as 3D vector. */
 	mPositionKeys = [];
+	
+	/** The rotation keys of this animation channel. Rotations are given as quaternions. */
 	mRotationKeys = [];
+	
+	/** The scaling keys of this animation channel. Scalings are specified as 3D vector. */
 	mScalingKeys = [];
 	
 	
