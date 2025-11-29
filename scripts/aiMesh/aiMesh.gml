@@ -156,9 +156,9 @@ function aiMesh() constructor {
 					ASSIMP_GetMatrixC4(),
 					ASSIMP_GetMatrixD4()
 				];
-				_bone.mNumWeights = ASSIMP_GetBoneNumWeights();
-				_bone.mWeights = array_create(mNumWeights, 0);
-				for (var _w = 0; _w < mNumWeights; _w++) {
+				var _mNumWeights = ASSIMP_GetBoneNumWeights();
+				_bone.mWeights = array_create(_mNumWeights, 0);
+				for (var _w = 0; _w < _mNumWeights; _w++) {
 					mWeights[_w] = new aiVertexWeight(
 						ASSIMP_GetBoneVertexIndex(_w),
 						ASSIMP_GetBoneVertexWeight(_w)

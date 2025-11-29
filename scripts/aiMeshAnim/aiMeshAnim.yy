@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"aiNode",
+  "%Name":"aiMeshAnim",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"aiNode",
+  "name":"aiMeshAnim",
   "parent":{
-    "name":"Scene",
-    "path":"folders/Libraries/Assimp/Scene.yy",
+    "name":"Animation",
+    "path":"folders/Libraries/Assimp/Animation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

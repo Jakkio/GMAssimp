@@ -160,12 +160,20 @@ enum aiLightSourceType
 
 
 
-enum ASSIMP_ANIMATION_BEHAVIOUR
+enum aiAnimBehaviour
 {
 	DEFAULT		= 0,
 	CONSTANT	= 1,
 	LINEAR		= 2,
 	REPEAT		= 3,
+}
+
+enum aiAnimInterpolation
+{
+	STEP				= 0,
+	LINEAR				= 1,
+	SPHERICAL_LINEAR	= 2,
+	CUBIC_SPLINE		= 3,
 }
 
 /// Enumerates the methods of mesh morphing supported by Assimp.

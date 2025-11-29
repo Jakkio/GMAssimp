@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"aiNode",
+  "%Name":"aiQuaternion",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"aiNode",
+  "name":"aiQuaternion",
   "parent":{
-    "name":"Scene",
-    "path":"folders/Libraries/Assimp/Scene.yy",
+    "name":"Core",
+    "path":"folders/Libraries/Assimp/Core.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

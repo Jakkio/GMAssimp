@@ -47,6 +47,14 @@ function aiScene() constructor {
 			array_push(mMaterials, _material);
 		}
 		
+		var _num_animations = ASSIMP_GetAnimationNum();
+		for (var _i = 0; _i < _num_animations; _i++) {
+			var _animation = new aiAnimation();
+			ASSIMP_BindAnimation(_i);
+			_animation.__read_bound();
+			array_push(mAnimations, _animation);
+		}
+		
 		var _num_lights = ASSIMP_GetLightNum();
 		for (var _i = 0; _i < _num_lights; _i++) {
 			var _light = new aiLight();

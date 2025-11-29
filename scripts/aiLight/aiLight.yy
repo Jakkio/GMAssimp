@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"aiLight",
   "parent":{
-    "name":"Libraries",
-    "path":"folders/Libraries.yy",
+    "name":"Scene",
+    "path":"folders/Libraries/Assimp/Scene.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

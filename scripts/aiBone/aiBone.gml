@@ -10,9 +10,6 @@ function aiBone() constructor {
 	// The name of the bone
 	mName = "";
 	
-	// The number of vertices affected by this bone The maximum value for this member is AI_MAX_BONE_WEIGHTS
-	mNumWeights = 0;
-	
 	// Matrix that transforms from mesh space to bone space in bind pose
 	mOffsetMatrix = matrix_build_identity();
 	

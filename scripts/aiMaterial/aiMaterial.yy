@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"aiMaterial",
   "parent":{
-    "name":"Libraries",
-    "path":"folders/Libraries.yy",
+    "name":"Material",
+    "path":"folders/Libraries/Assimp/Material.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

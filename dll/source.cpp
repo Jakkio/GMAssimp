@@ -2912,6 +2912,16 @@ namespace Animation
 			return act_node_anim->mPositionKeys[(uint)key_id].mValue.z;
 		}
 
+		export double GetNodeAnimPositionKeyInterpolation(double key_id)
+		{
+			if (!act_node_anim) { return aiAnimInterpolation_Linear; }
+			if (key_id < 0 || key_id >= act_node_anim->mNumPositionKeys)
+			{
+				return aiAnimInterpolation_Linear;
+			}
+			return act_node_anim->mPositionKeys[(uint)key_id].mInterpolation;
+		}
+
 		export double GetNodeAnimRotationKeyTime(double key_id)
 		{
 			if (!act_node_anim) { return 0; }
@@ -2962,6 +2972,16 @@ namespace Animation
 			return act_node_anim->mRotationKeys[(uint)key_id].mValue.w;
 		}
 
+		export double GetNodeAnimRotationKeyInterpolation(double key_id)
+		{
+			if (!act_node_anim) { return aiAnimInterpolation_Linear; }
+			if (key_id < 0 || key_id >= act_node_anim->mNumRotationKeys)
+			{
+				return aiAnimInterpolation_Linear;
+			}
+			return act_node_anim->mRotationKeys[(uint)key_id].mInterpolation;
+		}
+
 		export double GetNodeAnimScalingKeyTime(double key_id)
 		{
 			if (!act_node_anim) { return 0; }
@@ -3000,6 +3020,16 @@ namespace Animation
 				return 0;
 			}
 			return act_node_anim->mScalingKeys[(uint)key_id].mValue.z;
+		}
+
+		export double GetNodeAnimScalingKeyInterpolation(double key_id)
+		{
+			if (!act_node_anim) { return aiAnimInterpolation_Linear; }
+			if (key_id < 0 || key_id >= act_node_anim->mNumScalingKeys)
+			{
+				return aiAnimInterpolation_Linear;
+			}
+			return act_node_anim->mScalingKeys[(uint)key_id].mInterpolation;
 		}
 
 		export double GetNodeAnimPostState()

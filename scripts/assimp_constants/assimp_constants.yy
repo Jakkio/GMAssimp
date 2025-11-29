@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"assimp_constants",
   "parent":{
-    "name":"Assimp",
-    "path":"folders/Libraries/Assimp.yy",
+    "name":"Extension",
+    "path":"folders/Libraries/Assimp/Extension.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

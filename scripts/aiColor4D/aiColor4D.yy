@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"aiColor4D",
   "parent":{
-    "name":"Libraries",
-    "path":"folders/Libraries.yy",
+    "name":"Core",
+    "path":"folders/Libraries/Assimp/Core.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"aiBone",
   "parent":{
-    "name":"Libraries",
-    "path":"folders/Libraries.yy",
+    "name":"Mesh",
+    "path":"folders/Libraries/Assimp/Mesh.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
