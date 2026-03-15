@@ -11,10 +11,10 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Libraries","folderPath":"folders/Libraries.yy","name":"Libraries","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Assimp","folderPath":"folders/Libraries/Assimp.yy","name":"Assimp","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Animation","folderPath":"folders/Libraries/Assimp/Animation.yy","name":"Animation","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Core","folderPath":"folders/Libraries/Assimp/Core.yy","name":"Core","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Extension","folderPath":"folders/Libraries/Assimp/Extension.yy","name":"Extension","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Assimp","folderPath":"folders/Libraries/Assimp.yy","name":"Assimp","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Material","folderPath":"folders/Libraries/Assimp/Material.yy","name":"Material","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Mesh","folderPath":"folders/Libraries/Assimp/Mesh.yy","name":"Mesh","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Scene","folderPath":"folders/Libraries/Assimp/Scene.yy","name":"Scene","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -27,7 +27,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1400.2.936",
+    "IDEVersion":"2024.1400.4.1020",
   },
   "name":"GMAssimp",
   "resources":[

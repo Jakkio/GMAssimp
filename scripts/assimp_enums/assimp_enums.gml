@@ -47,7 +47,7 @@ enum aiProcess
 }
 
 
-enum ASSIMP_TEXTURE_OPERATION
+enum aiTextureOp
 {
 	MULTIPLY	= 0,
 	ADD			= 1,
@@ -58,16 +58,16 @@ enum ASSIMP_TEXTURE_OPERATION
 }
 
 
-enum ASSIMP_TEXTURE_MAP_MODE
+enum aiTextureMapMode
 {
 	WRAP	= 0,
 	CLAMP	= 1,
-	DECAL	= 3,
-	MIRROR	= 2
+	MIRROR	= 2,
+	DECAL	= 3
 }
 
 
-enum ASSIMP_TEXTURE_MAPPING
+enum aiTextureMapping
 {
 	UV			= 0,
 	SPHERE		= 1,
@@ -78,7 +78,7 @@ enum ASSIMP_TEXTURE_MAPPING
 }
 
 
-enum ASSIMP_TEXTURE_TYPE
+enum aiTextureType
 {
 	NONE				= 0,
 	DIFFUSE				= 1,
@@ -102,10 +102,29 @@ enum ASSIMP_TEXTURE_TYPE
 	SHEEN				= 19,
 	CLEARCOAT			= 20,
 	TRANSMISSION		= 21,
+    //Maya material declarations
+    MAYA_BASE = 22,
+    MAYA_SPECULAR = 23,
+    MAYA_SPECULAR_COLOR = 24,
+    MAYA_SPECULAR_ROUGHNESS = 25,
+
+    ANISOTROPY = 26,
+
+    /**
+     * gltf material declarations
+     * Refs: https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#metallic-roughness-material
+     *           "textures for metalness and roughness properties are packed together in a single
+     *           texture called metallicRoughnessTexture. Its green channel contains roughness
+     *           values and its blue channel contains metalness values..."
+     *       https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#_material_pbrmetallicroughness_metallicroughnesstexture
+     *           "The metalness values are sampled from the B channel. The roughness values are
+     *           sampled from the G channel..."
+     */
+    GLTF_METALLIC_ROUGHNESS = 27
 }
 
 
-enum ASSIMP_SHADING_MODE
+enum aiShadingMode
 {
 	FLAT			= 1,
 	GOURAUD			= 2,
@@ -121,7 +140,7 @@ enum ASSIMP_SHADING_MODE
 }
 
 
-enum ASSIMP_TEXTURE_FLAGS
+enum aiTextureFlags
 {
 	INVERT			= 0x1,
 	USE_ALPHA		= 0x2,
@@ -129,21 +148,10 @@ enum ASSIMP_TEXTURE_FLAGS
 }
 
 
-enum ASSIMP_BLEND_MODE
+enum aiBlendMode
 {
 	DEFAULT		= 0,
 	ADDITIVE	= 1
-}
-
-
-enum ASSIMP_PROPERTY_TYPE_INFO
-{
-	UNKNOWN		= 0,
-	FLOAT		= 1,
-	DOUBLE		= 2,
-	STRING		= 3,
-	INTEGER		= 4,
-	BUFFER		= 5
 }
 
 
