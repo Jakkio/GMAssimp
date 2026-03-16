@@ -84,6 +84,30 @@ function aiMaterial() constructor {
 														ASSIMP_GetMaterialReflectiveColorG(),
 														ASSIMP_GetMaterialReflectiveColorB() );
 					break;
+				case "?bg.global":
+					global_background_image = ASSIMP_GetMaterialGlobalBackgroundImage();
+					break;
+				case "?sh.lang":
+					global_shader_language = ASSIMP_GetMaterialGlobalShaderLanguage();
+					break;
+				case "?sh.vs":
+					shader_vertex = ASSIMP_GetMaterialShaderVertex();
+					break;
+				case "?sh.fs":
+					shader_fragment = ASSIMP_GetMaterialShaderFragment();
+					break;
+				case "?sh.gs":
+					shader_geo = ASSIMP_GetMaterialShaderGeo();
+					break;
+				case "?sh.ts":
+					shader_tessellation = ASSIMP_GetMaterialShaderTessellation();
+					break;
+				case "?sh.ps":
+					shader_primitive = ASSIMP_GetMaterialShaderPrimitive();
+					break;
+				case "?sh.cs":
+					shader_compute = ASSIMP_GetMaterialShaderCompute();
+					break;
 			}
 		}
 	}
