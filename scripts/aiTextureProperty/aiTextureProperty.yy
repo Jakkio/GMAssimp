@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"assimp_enums_OLD",
+  "%Name":"aiTextureProperty",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"assimp_enums_OLD",
+  "name":"aiTextureProperty",
   "parent":{
-    "name":"Extension",
-    "path":"folders/Libraries/Assimp/Extension.yy",
+    "name":"Material",
+    "path":"folders/Libraries/Assimp/Material.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

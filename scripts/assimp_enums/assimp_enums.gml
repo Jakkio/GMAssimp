@@ -80,47 +80,37 @@ enum aiTextureMapping
 
 enum aiTextureType
 {
-	NONE				= 0,
-	DIFFUSE				= 1,
-	SPECULAR			= 2,
-	AMBIENT				= 3,
-	EMISSIVE			= 4,
-	HEIGHT				= 5,
-	NORMALS				= 6,
-	SHININESS			= 7,
-	OPACITY				= 8,
-	DISPLACEMENT		= 9,
-	LIGHTMAP			= 10,
-	REFLECTION			= 11,
-	BASE_COLOR			= 12,
-	NORMAL_CAMERA		= 13,
-	EMISSION_COLOR		= 14,
-	METALNESS			= 15,
-	DIFFUSE_ROUGHNESS	= 16,
-	AMBIENT_OCCLUSION	= 17,
-	UNKNOWN				= 18,
-	SHEEN				= 19,
-	CLEARCOAT			= 20,
-	TRANSMISSION		= 21,
+	NONE					= 0,
+	DIFFUSE					= 1,
+	SPECULAR				= 2,
+	AMBIENT					= 3,
+	EMISSIVE				= 4,
+	HEIGHT					= 5,
+	NORMALS					= 6,
+	SHININESS				= 7,
+	OPACITY					= 8,
+	DISPLACEMENT			= 9,
+	LIGHTMAP				= 10,
+	REFLECTION				= 11,
+	BASE_COLOR				= 12,
+	NORMAL_CAMERA			= 13,
+	EMISSION_COLOR			= 14,
+	METALNESS				= 15,
+	DIFFUSE_ROUGHNESS		= 16,
+	AMBIENT_OCCLUSION		= 17,
+	UNKNOWN					= 18,
+	SHEEN					= 19,
+	CLEARCOAT				= 20,
+	TRANSMISSION			= 21,
     //Maya material declarations
-    MAYA_BASE = 22,
-    MAYA_SPECULAR = 23,
-    MAYA_SPECULAR_COLOR = 24,
-    MAYA_SPECULAR_ROUGHNESS = 25,
+    MAYA_BASE				= 22,
+    MAYA_SPECULAR			= 23,
+    MAYA_SPECULAR_COLOR		= 24,
+    MAYA_SPECULAR_ROUGHNESS	= 25,
 
-    ANISOTROPY = 26,
-
-    /**
-     * gltf material declarations
-     * Refs: https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#metallic-roughness-material
-     *           "textures for metalness and roughness properties are packed together in a single
-     *           texture called metallicRoughnessTexture. Its green channel contains roughness
-     *           values and its blue channel contains metalness values..."
-     *       https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#_material_pbrmetallicroughness_metallicroughnesstexture
-     *           "The metalness values are sampled from the B channel. The roughness values are
-     *           sampled from the G channel..."
-     */
-    GLTF_METALLIC_ROUGHNESS = 27
+    ANISOTROPY				= 26,
+	
+    GLTF_METALLIC_ROUGHNESS	= 27
 }
 
 

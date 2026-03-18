@@ -13,3 +13,4 @@ scene = importer.ReadFile(	working_directory + "/" + _filename,
 							aiProcess.VALIDATE_DATA_STRUCTURE |
 							aiProcess.GEN_BOUNDING_BOXES
 							);
+

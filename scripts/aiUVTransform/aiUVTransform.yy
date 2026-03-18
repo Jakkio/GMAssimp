@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"aiUVTransform",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"aiUVTransform",
+  "parent":{
+    "name":"Material",
+    "path":"folders/Libraries/Assimp/Material.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
